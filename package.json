@@ -1,7 +1,6 @@
 {
   "name": "pubshop_client",
   "version": "0.1.0",
-  "proxy": "http://pubshopapp.herokuapp.com",
   "private": true,
   "dependencies": {
     "axios": "^0.21.1",

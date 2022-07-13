@@ -1,3 +1,4 @@
+import { API_URL } from '../constants/config'
 import {
   PRODUCT_LIST_REQUEST,
   PRODUCT_LIST_SUCCESS,
@@ -28,7 +29,7 @@ export const listProducts =
     try {
       dispatch({ type: PRODUCT_LIST_REQUEST })
       const res = await fetch(
-        `/api/products?keyword=${keyword}&pageNumber=${pageNumber}`,
+        `${API_URL}/api/products?keyword=${keyword}&pageNumber=${pageNumber}`,
       )
       const data = await res.json()
 
@@ -47,7 +48,7 @@ export const listProducts =
 export const listTopProducts = () => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_TOP_REQUEST })
-    const res = await fetch(`/api/products/top`)
+    const res = await fetch(`${API_URL}/api/products/top`)
     const products = await res.json()
 
     dispatch({ type: PRODUCT_TOP_SUCCESS, payload: products })
@@ -65,7 +66,7 @@ export const listTopProducts = () => async (dispatch) => {
 export const listProductDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_DETAILS_REQUEST })
-    const res = await fetch(`/api/products/${id}`)
+    const res = await fetch(`${API_URL}/api/products/${id}`)
     const product = await res.json()
     dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: product })
   } catch (error) {
@@ -87,7 +88,7 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
 
     dispatch({ type: PRODUCT_DELETE_REQUEST })
 
-    const res = await fetch(`/api/products/${id}`, {
+    const res = await fetch(`${API_URL}/api/products/${id}`, {
       method: 'DELETE',
       headers: { Authorization: `Bearer ${userInfo.token}` },
     })
@@ -114,7 +115,7 @@ export const createProduct = () => async (dispatch, getState) => {
 
     dispatch({ type: PRODUCT_CREATE_REQUEST })
 
-    const res = await fetch(`/api/products`, {
+    const res = await fetch(`${API_URL}/api/products`, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${userInfo.token}`,
@@ -143,7 +144,7 @@ export const updateProduct = (product) => async (dispatch, getState) => {
 
     dispatch({ type: PRODUCT_UPDATE_REQUEST })
 
-    const res = await fetch(`/api/products/${product._id}`, {
+    const res = await fetch(`${API_URL}/api/products/${product._id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -174,7 +175,7 @@ export const createProductReview =
 
       dispatch({ type: PRODUCT_CREATE_REVIEW_REQUEST })
 
-      const res = await fetch(`/api/products/${productId}/reviews`, {
+      const res = await fetch(`${API_URL}/api/products/${productId}/reviews`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
