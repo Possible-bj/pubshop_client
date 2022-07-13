@@ -1,0 +1,64 @@
+main {
+  min-height: 80vh;
+}
+h3 {
+  padding: 1rem 0;
+}
+
+h1 {
+  font-size: 1.8rem;
+  padding: 1rem 0;
+}
+h2 {
+  font-size: 1.4rem;
+  padding: 0.5rem 0;
+}
+.rating span {
+  margin: 0.1rem;
+}
+.input-box {
+  color: #000;
+}
+.input-control {
+  border: 2px solid #aaa;
+}
+.bg-transparent {
+  background-color: transparent;
+}
+.border-black-2px {
+  border: 2px solid #000;
+}
+.border-success {
+  border: 2px solid #10ab3f;
+}
+.br-6 {
+  border-radius: 6px;
+}
+
+/* Carousel */
+
+.carousel-item-next,
+.carousel-item-prev,
+.carousel-item-active {
+  display: flex;
+}
+.carousel-caption {
+  position: absolute;
+  top: 0;
+}
+.carousel-caption h2 {
+  color: #fff;
+}
+.carousel img {
+  height: 300px;
+  padding: 30px;
+  margin: 50px auto;
+  border-radius: 50%;
+}
+.carousel a {
+  margin: 0 auto;
+}
+/* 
+.carousel-item {
+  margin: 0 auto;
+} */
