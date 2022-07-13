@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 import { Form, Button, Image } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
@@ -10,7 +11,7 @@ import {
   PRODUCT_DETAILS_RESET,
   PRODUCT_UPDATE_RESET,
 } from '../constants/productConstants'
-import axios from 'axios'
+import { API_URL } from '../constants/config'
 
 const ProductEditScreen = ({ match, history }) => {
   const productId = match.params.id
@@ -83,7 +84,11 @@ const ProductEditScreen = ({ match, history }) => {
         },
       }
 
-      const { data } = await axios.post('/api/uploads', formData, config)
+      const { data } = await axios.post(
+        `${API_URL}/api/uploads`,
+        formData,
+        config,
+      )
       setImage(data.secure_url)
       setUploading(false)
     } catch (error) {
