@@ -4,7 +4,7 @@ import {
   CART_SAVE_SHIPPING_ADDRESS,
   CART_SAVE_PAYMENT_METHOD,
 } from '../constants/cartConstants'
-import { API_URL } from '../constants/config'
+import API_URL from '../constants/config'
 
 export const addToCart = (id, qty) => async (dispatch, getState) => {
   const res = await fetch(`${API_URL}/api/products/${id}`)

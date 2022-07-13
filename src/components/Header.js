@@ -16,12 +16,14 @@ const Header = () => {
   return (
     <header>
       <Navbar bg='dark' variant='dark' expand='lg' collapseOnSelect>
-        <Container>
-          <LinkContainer to='/'>
-            <Navbar.Brand>Pub Shop</Navbar.Brand>
-          </LinkContainer>
-          <Route render={({ history }) => <SearchBox history={history} />} />
-          <Navbar.Toggle aria-controls='basic-navbar-nav' />
+        <Container style={{ position: 'relative' }}>
+          <div className='header-fragment'>
+            <LinkContainer to='/'>
+              <Navbar.Brand>Pub Shop</Navbar.Brand>
+            </LinkContainer>
+            <Navbar.Toggle aria-controls='basic-navbar-nav' />
+            <Route render={({ history }) => <SearchBox history={history} />} />
+          </div>
           <Navbar.Collapse id='basic-navbar-nav'>
             <Nav className='ml-auto'>
               <LinkContainer to='/cart'>

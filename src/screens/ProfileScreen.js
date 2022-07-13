@@ -61,7 +61,7 @@ const RegisterScreen = ({ history }) => {
         {message && <Message variant='danger'>{message}</Message>}
         {error && <Message variant='danger'>{error}</Message>}
         {success && <Message variant='success'>Profile Updated</Message>}
-        {loading && <Loader />}
+        {loading && <Loader loaderHeight={'50px'} loaderWidth={'50px'} />}
         <Form onSubmit={submitHandler}>
           <Form.Group controlId='name'>
             <Form.Label>Name</Form.Label>
@@ -69,6 +69,7 @@ const RegisterScreen = ({ history }) => {
               type='name'
               placeholder='Enter Name'
               value={name}
+              className='br-6'
               onChange={(e) => setName(e.target.value)}></Form.Control>
           </Form.Group>
           <Form.Group controlId='email'>
@@ -77,6 +78,7 @@ const RegisterScreen = ({ history }) => {
               type='email'
               placeholder='Enter Email'
               value={email}
+              className='br-6'
               onChange={(e) => setEmail(e.target.value)}></Form.Control>
           </Form.Group>
           <Form.Group controlId='password'>
@@ -85,6 +87,7 @@ const RegisterScreen = ({ history }) => {
               type='password'
               placeholder='Enter password'
               value={password}
+              className='br-6'
               onChange={(e) => setPassword(e.target.value)}></Form.Control>
           </Form.Group>
           <Form.Group controlId='controlPassword'>
@@ -93,11 +96,12 @@ const RegisterScreen = ({ history }) => {
               type='password'
               placeholder='Confirm password'
               value={confirmPassword}
+              className='br-6'
               onChange={(e) =>
                 setConfirmPassword(e.target.value)
               }></Form.Control>
           </Form.Group>
-          <Button type='submit' variant='primary'>
+          <Button type='submit' variant='primary' className='br-6'>
             Update
           </Button>
         </Form>
@@ -105,7 +109,7 @@ const RegisterScreen = ({ history }) => {
       <Col md={9}>
         <h1>My Orders</h1>
         {loadingOrders ? (
-          <Loader />
+          <Loader loaderHeight={'50px'} loaderWidth={'50px'} />
         ) : errorOrders ? (
           <Message variant='danger'>{errorOrders}</Message>
         ) : (
@@ -142,7 +146,7 @@ const RegisterScreen = ({ history }) => {
                   </td>
                   <td>
                     <LinkContainer to={`/order/${order._id}`}>
-                      <Button variant='light' className='btn-sm'>
+                      <Button variant='light' className='btn-sm br-6'>
                         {' '}
                         Details
                       </Button>

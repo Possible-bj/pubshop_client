@@ -17,14 +17,14 @@ const UserEditScreen = ({ match, history }) => {
 
   const dispatch = useDispatch()
 
-  const userDetails = useSelector(state => state.userDetails)
+  const userDetails = useSelector((state) => state.userDetails)
   const { loading, error, user } = userDetails
 
-  const userUpdate = useSelector(state => state.userUpdate)
+  const userUpdate = useSelector((state) => state.userUpdate)
   const {
     loading: loadingUpdate,
     error: errorUpdate,
-    success: successUpdate
+    success: successUpdate,
   } = userUpdate
 
   useEffect(() => {
@@ -42,22 +42,22 @@ const UserEditScreen = ({ match, history }) => {
     }
   }, [dispatch, user, userId, successUpdate, history])
 
-  const submitHandler = e => {
+  const submitHandler = (e) => {
     e.preventDefault()
     dispatch(updateUser({ _id: userId, name, email, isAdmin }))
   }
 
   return (
     <>
-      <Link to={`/admin/userlist`} className='btn btn-light my-3'>
+      <Link to={`/admin/userlist`} className='btn btn-light my-3 br-6'>
         Go Back
       </Link>
       <FormContainer>
         <h1>Edit User</h1>
-        {loadingUpdate && <Loader />}
+        {loadingUpdate && <Loader loaderHeight={'50px'} loaderWidth={'50px'} />}
         {errorUpdate && <Message>{errorUpdate}</Message>}
         {loading ? (
-          <Loader />
+          <Loader loaderHeight={'50px'} loaderWidth={'50px'} />
         ) : error ? (
           <Message variant='danger'>{error}</Message>
         ) : (
@@ -68,7 +68,8 @@ const UserEditScreen = ({ match, history }) => {
                 type='name'
                 placeholder='Enter Name'
                 value={name}
-                onChange={e => setName(e.target.value)}></Form.Control>
+                className='br-6'
+                onChange={(e) => setName(e.target.value)}></Form.Control>
             </Form.Group>
             <Form.Group controlId='email'>
               <Form.Label>Email Address</Form.Label>
@@ -76,18 +77,19 @@ const UserEditScreen = ({ match, history }) => {
                 type='email'
                 placeholder='Enter Email'
                 value={email}
-                onChange={e => setEmail(e.target.value)}></Form.Control>
+                className='br-6'
+                onChange={(e) => setEmail(e.target.value)}></Form.Control>
             </Form.Group>
             <Form.Group controlId='isadmin'>
               {/* <Form.Label></Form.Label> */}
               <Form.Check
-                type='checkbox'
+                type='switch'
                 label='isAdmin'
                 checked={isAdmin}
-                onChange={e => setIsAdmin(e.target.checked)}></Form.Check>
+                onChange={(e) => setIsAdmin(e.target.checked)}></Form.Check>
             </Form.Group>
 
-            <Button type='submit' variant='primary'>
+            <Button type='submit' variant='primary' className='br-6'>
               Update
             </Button>
           </Form>

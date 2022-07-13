@@ -11,7 +11,7 @@ import {
   PRODUCT_DETAILS_RESET,
   PRODUCT_UPDATE_RESET,
 } from '../constants/productConstants'
-import { API_URL } from '../constants/config'
+import API_URL from '../constants/config'
 
 const ProductEditScreen = ({ match, history }) => {
   const productId = match.params.id
@@ -31,6 +31,9 @@ const ProductEditScreen = ({ match, history }) => {
 
   const productDetails = useSelector((state) => state.productDetails)
   const { loading, error, product } = productDetails
+
+  const userLogin = useSelector((state) => state.userLogin)
+  const { userInfo } = userLogin
 
   const productUpdate = useSelector((state) => state.productUpdate)
   const {
@@ -81,6 +84,7 @@ const ProductEditScreen = ({ match, history }) => {
       const config = {
         headers: {
           'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${userInfo.token}`,
         },
       }
 

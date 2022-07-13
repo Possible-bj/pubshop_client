@@ -62,17 +62,21 @@ const ProductListScreen = ({ history, match }) => {
         </Col>
 
         <Col className='text-right'>
-          <Button className='my-3' onClick={createProductHandler}>
+          <Button className='my-3 br-6' onClick={createProductHandler}>
             <i className='fas fa-plus'></i> Create Product
           </Button>
         </Col>
       </Row>
-      {loadingDelete ? <Loader /> : null}
+      {loadingDelete ? (
+        <Loader loaderHeight={'50px'} loaderWidth={'50px'} />
+      ) : null}
       {errorDelete ? <Message>{errorDelete}</Message> : null}
-      {loadingCreate ? <Loader /> : null}
+      {loadingCreate ? (
+        <Loader loaderHeight={'50px'} loaderWidth={'50px'} />
+      ) : null}
       {errorCreate ? <Message>{errorCreate}</Message> : null}
       {loading ? (
-        <Loader />
+        <Loader loaderHeight={'50px'} loaderWidth={'50px'} />
       ) : error ? (
         <Message variant='danger'>{error}</Message>
       ) : (

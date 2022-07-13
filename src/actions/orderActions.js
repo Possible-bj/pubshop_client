@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { CART_RESET } from '../constants/cartConstants'
-import { API_URL } from '../constants/config'
+import API_URL from '../constants/config'
 import {
   ORDER_CREATE_REQUEST,
   ORDER_CREATE_SUCCESS,

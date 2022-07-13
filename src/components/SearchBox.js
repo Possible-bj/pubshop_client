@@ -14,7 +14,7 @@ const SearchBox = ({ history }) => {
   }
 
   return (
-    <Form onSubmit={submitHandler} inline>
+    <Form onSubmit={submitHandler} inline className='product-search-form'>
       <Form.Control
         type='text'
         name='q'

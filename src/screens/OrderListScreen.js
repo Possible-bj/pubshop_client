@@ -53,7 +53,7 @@ const OrderListScreen = ({ history, match }) => {
       </Row>
 
       {loading ? (
-        <Loader />
+        <Loader loaderHeight={'50px'} loaderWidth={'50px'} />
       ) : error ? (
         <Message variant='danger'>{error}</Message>
       ) : (
@@ -92,7 +92,7 @@ const OrderListScreen = ({ history, match }) => {
                 </td>
                 <td>
                   <LinkContainer to={`/order/${order._id}`}>
-                    <Button variant='light' className='btn-sm'>
+                    <Button variant='light' className='btn-sm br-6'>
                       Details
                     </Button>
                   </LinkContainer>

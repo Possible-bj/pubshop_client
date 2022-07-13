@@ -10,14 +10,14 @@ const CartScreen = ({ match, location, history }) => {
   const productId = match.params.id
   const qty = location.search ? Number(location.search.split('=')[1]) : 1
   const dispatch = useDispatch()
-  const { cartItems } = useSelector(state => state.cart)
+  const { cartItems } = useSelector((state) => state.cart)
   useEffect(() => {
     if (productId) {
       dispatch(addToCart(productId, qty))
     }
   }, [dispatch, productId, qty])
 
-  const removeFromCartHandler = id => {
+  const removeFromCartHandler = (id) => {
     dispatch(removeFromCart(id))
   }
   const checkoutHandler = () => {
@@ -30,11 +30,15 @@ const CartScreen = ({ match, location, history }) => {
         {cartItems.length === 0 ? (
           <Message>
             {' '}
-            Your cart is empty <Link to='/'> Go Back</Link>{' '}
+            Your cart is empty{' '}
+            <Link to='/' className='btn br-6'>
+              {' '}
+              Go Back
+            </Link>{' '}
           </Message>
         ) : (
-          <ListGroup variant='flush'>
-            {cartItems.map(item => (
+          <ListGroup variant='flush br-6'>
+            {cartItems.map((item) => (
               <ListGroup.Item key={item.product}>
                 <Row>
                   <Col>
@@ -48,12 +52,13 @@ const CartScreen = ({ match, location, history }) => {
                     <Form.Control
                       as='select'
                       value={item.qty}
-                      onChange={e =>
+                      className='br-6'
+                      onChange={(e) =>
                         dispatch(
-                          addToCart(item.product, Number(e.target.value))
+                          addToCart(item.product, Number(e.target.value)),
                         )
                       }>
-                      {[...Array(item.countInStock).keys()].map(x => (
+                      {[...Array(item.countInStock).keys()].map((x) => (
                         <option key={x + 1} value={x + 1}>
                           {' '}
                           {x + 1}{' '}
@@ -65,6 +70,7 @@ const CartScreen = ({ match, location, history }) => {
                     <Button
                       type='button'
                       variant='light'
+                      className='br-6'
                       onClick={() => removeFromCartHandler(item.product)}>
                       <i className='fas fa-trash'></i>
                     </Button>
@@ -76,7 +82,7 @@ const CartScreen = ({ match, location, history }) => {
         )}
       </Col>
       <Col md={4}>
-        <Card>
+        <Card className='br-6'>
           <ListGroup variant='flush'>
             <ListGroup.Item>
               <h2>
@@ -92,7 +98,7 @@ const CartScreen = ({ match, location, history }) => {
             <ListGroup.Item>
               <Button
                 type='button'
-                className='btn-block'
+                className='btn-block br-6'
                 disabled={cartItems.length === 0}
                 onClick={checkoutHandler}>
                 {' '}

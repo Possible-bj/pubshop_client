@@ -1,4 +1,4 @@
-import { API_URL } from '../constants/config'
+import API_URL from '../constants/config'
 import {
   PRODUCT_LIST_REQUEST,
   PRODUCT_LIST_SUCCESS,

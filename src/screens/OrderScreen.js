@@ -15,7 +15,7 @@ import {
   ORDER_PAY_RESET,
   ORDER_DELIVER_RESET,
 } from '../constants/orderConstants'
-import { API_URL } from '../constants/config'
+import API_URL from '../constants/config'
 
 const OrderScreen = ({ match, history }) => {
   const orderId = match.params.id
@@ -72,7 +72,7 @@ const OrderScreen = ({ match, history }) => {
   const deliverHandler = () => dispatch(deliverOrder(orderId))
 
   return loading ? (
-    <Loader />
+    <Loader loaderHeight={'50px'} loaderWidth={'50px'} />
   ) : error ? (
     <Message variant='danger'>{error}</Message>
   ) : (
@@ -183,9 +183,11 @@ const OrderScreen = ({ match, history }) => {
 
               {!order.isPaid && (
                 <ListGroup.Item>
-                  {loadingPay && <Loader />}
+                  {loadingPay && (
+                    <Loader loaderHeight={'50px'} loaderWidth={'50px'} />
+                  )}
                   {!sdkReady ? (
-                    <Loader />
+                    <Loader loaderHeight={'50px'} loaderWidth={'50px'} />
                   ) : (
                     <PayPalButton
                       amount={order.totalPrice}
@@ -195,7 +197,9 @@ const OrderScreen = ({ match, history }) => {
                 </ListGroup.Item>
               )}
 
-              {loadingDeliver ? <Loader /> : null}
+              {loadingDeliver ? (
+                <Loader loaderHeight={'50px'} loaderWidth={'50px'} />
+              ) : null}
 
               {userInfo &&
               userInfo.isAdmin &&
@@ -204,7 +208,7 @@ const OrderScreen = ({ match, history }) => {
                 <ListGroup.Item>
                   <Button
                     type='button'
-                    className='btn-block'
+                    className='btn-block br-6'
                     onClick={deliverHandler}>
                     Mark as Deivered
                   </Button>
