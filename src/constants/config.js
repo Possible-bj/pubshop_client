@@ -1,1 +1,1 @@
-export const API_URL = 'http://pubshopapp.herokuapp.com'
+export const API_URL = 'https://pubshopapp.herokuapp.com'
